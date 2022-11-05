@@ -68,9 +68,13 @@ namespace Kopernicus.Components
             FrameCounter = UnityEngine.Random.Range(0, 10);
 
             float density = (float)ThermoHelper.OpticalDepth(cameraPosition, KopernicusStar.CelestialBodies[sun]);
+
             float r = Mathf.Exp(.1f - density * .3f);
             float g = Mathf.Exp(.1f - density * .72f);
             float b = Mathf.Exp(.1f - density * 1.65f);
+
+            if (float.IsNaN(r) || float.IsNaN(g) || float.IsNaN(b)) return;
+
             KopernicusStar.CelestialBodies[sun].atmosphericTintCache = new Color(r, g, b);
         }
 
