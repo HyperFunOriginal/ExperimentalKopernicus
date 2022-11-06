@@ -65,11 +65,11 @@ namespace Kopernicus.Components
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            frameTimer++;
             if (HighLogic.LoadedSceneIsFlight)
             {
                 if (deployState == ModuleDeployablePart.DeployState.EXTENDED)
                 {
+                    frameTimer++;
                     if (frameTimer > (50 * Kopernicus.RuntimeUtility.RuntimeUtility.KopernicusConfig.SolarRefreshRate))
                     {
                         CelestialBody trackingStar = trackingBody;
